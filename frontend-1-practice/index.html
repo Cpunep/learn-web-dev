@@ -4,23 +4,188 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Выбор даты и времени</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!--
-      ЗАДАНИЕ
-      ========
-      Сверстать страницу выбора даты и времени по своему макету.
+    <header class="header">
+      <a href="#" class="header__logo" aria-label="Стрижем быстро и красиво">
+        <img src="images/logob.png" alt="Логотип" class="logo-icon" />
+      </a>
+      <a href="#" class="header__link">На главную</a>
+    </header>
 
-      Пока это только вёрстка. Никакого JavaScript — ни кликов,
-      ни переходов, ни выбора дня. Всё статично.
+    <div class="header-divider"></div>
 
-      Стили пишите в styles.css. Разметку — здесь.
-    -->
+    <nav class="steps" aria-label="Шаги бронирования">
+      <ol class="steps__list">
+        <li class="steps__item">
+          <span class="steps__num">1</span>
+          <span class="steps__line"></span>
+        </li>
+        <li class="steps__item">
+          <span class="steps__num">2</span>
+          <span class="steps__line"></span>
+        </li>
+        <li class="steps__item steps__item--active">
+          <span class="steps__num">3</span>
+          <span class="steps__line steps__line--active"></span>
+        </li>
+        <li class="steps__item">
+          <span class="steps__num">4</span>
+          <span class="steps__line"></span>
+        </li>
+        <li class="steps__item">
+          <span class="steps__num">5</span>
+          <span class="steps__line"></span>
+        </li>
+      </ol>
+    </nav>
 
-    <div class="page">
-      <!-- Начните отсюда. Разметьте шапку, основную область
-           с календарём и слотами, подвал. -->
-    </div>
+    <main class="main">
+      <div class="main__title-row">
+        <button type="button" class="back-btn" aria-label="Назад">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 5L8 12L15 19" stroke="#0d0d0d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <h1 class="main__title">Выберите дату и время</h1>
+      </div>
+
+      <div class="content">
+        <section class="calendar" aria-label="Календарь">
+          <div class="calendar__head">
+            <h2 class="calendar__month">Июнь 2025</h2>
+            <div class="calendar__arrows">
+              <button type="button" class="arrow-btn" aria-label="Предыдущий месяц">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 5L8 12L15 19" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <button type="button" class="arrow-btn" aria-label="Следующий месяц">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 5L16 12L9 19" stroke="#0d0d0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="calendar__weekdays">
+            <span class="calendar__weekday">Пн</span>
+            <span class="calendar__weekday">Вт</span>
+            <span class="calendar__weekday">Ср</span>
+            <span class="calendar__weekday">Чт</span>
+            <span class="calendar__weekday">Пт</span>
+            <span class="calendar__weekday">Сб</span>
+            <span class="calendar__weekday">Вс</span>
+          </div>
+
+          <div class="calendar__days">
+            <span class="day-cell day-cell--muted">26</span>
+            <span class="day-cell day-cell--muted">27</span>
+            <span class="day-cell day-cell--muted">28</span>
+            <span class="day-cell day-cell--muted">29</span>
+            <span class="day-cell day-cell--muted">30</span>
+            <span class="day-cell day-cell--muted">31</span>
+            <span class="day-cell">1</span>
+
+            <span class="day-cell">2</span>
+            <span class="day-cell">3</span>
+            <span class="day-cell">4</span>
+            <span class="day-cell">5</span>
+            <span class="day-cell">6</span>
+            <span class="day-cell">7</span>
+            <span class="day-cell">8</span>
+
+            <span class="day-cell">9</span>
+            <span class="day-cell">10</span>
+            <span class="day-cell">11</span>
+            <span class="day-cell">12</span>
+            <span class="day-cell">13</span>
+            <span class="day-cell">14</span>
+            <span class="day-cell">15</span>
+
+            <span class="day-cell">16</span>
+            <span class="day-cell">17</span>
+            <span class="day-cell">18</span>
+            <span class="day-cell">19</span>
+            <span class="day-cell day-cell--selected">20</span>
+            <span class="day-cell">21</span>
+            <span class="day-cell">22</span>
+          </div>
+        </section>
+
+        <aside class="slots" aria-label="Доступное время">
+          <h2 class="slots__title">Доступное время</h2>
+          <div class="slots__grid">
+            <button type="button" class="slot">10:00</button>
+            <button type="button" class="slot slot--busy" disabled>
+              <span class="slot__time">11:00</span>
+              <span class="slot__note">Занято</span>
+            </button>
+            <button type="button" class="slot slot--selected">12:00</button>
+            <button type="button" class="slot slot--busy" disabled>
+              <span class="slot__time">13:00</span>
+              <span class="slot__note">Занято</span>
+            </button>
+            <button type="button" class="slot">14:00</button>
+            <button type="button" class="slot">15:00</button>
+            <button type="button" class="slot">16:00</button>
+            <button type="button" class="slot">17:00</button>
+          </div>
+        </aside>
+      </div>
+
+      <div class="summary">
+        <span class="summary__chosen">20 июня 12:00</span>
+        <button type="button" class="next-btn">Далее</button>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <img src="images/logow.png" alt="Логотип" class="logo-icon" />
+          <p class="footer__slogan">Стрижем быстро и красиво</p>
+        </div>
+
+        <div class="footer__col">
+          <h3 class="footer__heading">Контакты</h3>
+          <ul class="footer__list">
+            <li class="footer__item">
+              <svg class="footer__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z" stroke="#ffffff" stroke-width="1.8" />
+                <circle cx="12" cy="10" r="2.5" stroke="#ffffff" stroke-width="1.8" />
+              </svg>
+              <span>ул. Садовая, 15, Москва</span>
+            </li>
+            <li class="footer__item">
+              <svg class="footer__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1.1 1A16 16 0 014 5.1 1 1 0 015 4z" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round" />
+              </svg>
+              <span>+7 (495) 123-45-67</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h3 class="footer__heading">Режим работы</h3>
+          <ul class="footer__list footer__list--plain">
+            <li class="footer__item">Пн–Пт: 9:00 – 21:00</li>
+            <li class="footer__item">Сб–Вс: 10:00 – 19:00</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026. Все права защищены.</p>
+        <a href="#" class="footer__policy">Политика конфиденциальности</a>
+      </div>
+    </footer>
   </body>
 </html>
