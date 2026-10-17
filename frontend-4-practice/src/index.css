@@ -1,7 +1,6 @@
-/* Глобальные стили.
-   Минимум: сброс отступов и шрифт по умолчанию.
-   Остальное — стили своей страницы — добавляем сами
-   (в этом файле или в отдельных .css для компонентов). */
+/* Глобальные стили приложения. Шрифт Oswald + минимальный сброс. */
+
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap");
 
 * {
   margin: 0;
@@ -11,5 +10,32 @@
 
 body {
   min-height: 100vh;
-  font-family: sans-serif;
+  font-family: "Oswald", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 400;
+  background-color: #ffffff;
+  color: #0d0d0d;
+  font-size: 16px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
 }
