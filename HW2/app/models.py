@@ -4,7 +4,6 @@ from pydantic import BaseModel, ConfigDict, Field
 
 
 class Service(BaseModel):
-    # Услуга салона
     id: int
     name: str
     category_id: int
@@ -12,17 +11,21 @@ class Service(BaseModel):
 
 
 class Category(BaseModel):
-    # Категория услуг без агрегатов (для внутреннего хранения)
-
     id: int
     name: str
 
 
 class CategoryWithCount(BaseModel):
-    # Категория услуг вместе с количеством услуг в ней
-
     model_config = ConfigDict(populate_by_name=True)
 
     id: int
     name: str
     services_count: int = Field(alias="servicesCount")
+
+
+class MasterOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    name: str
+    specialization: str

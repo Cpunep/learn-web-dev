@@ -23,10 +23,7 @@ SERVICES: list[Service] = [
 
 class CategoryRepository:
 
-    # Репозиторий категорий услуг
-
     def list_all(self) -> list[Category]:
-        # Возвращает все категории в порядке объявления
         return list(CATEGORIES)
 
     def get_by_id(self, category_id: int) -> Category | None:
@@ -34,16 +31,11 @@ class CategoryRepository:
 
 class ServiceRepository:
 
-    # Репозиторий услуг
-
     def count_by_category(self) -> dict[int, int]:
         counts: dict[int, int] = defaultdict(int)
         for service in SERVICES:
             counts[service.category_id] += 1
         return dict(counts)
-
-
-# Готовые экземпляры для внедрения в роутеры.
 
 category_repo = CategoryRepository()
 service_repo = ServiceRepository()

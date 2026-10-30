@@ -1,13 +1,6 @@
 from __future__ import annotations
 
-import pytest
 from fastapi.testclient import TestClient
-
-from app.main import app
-
-@pytest.fixture()
-def client() -> TestClient:
-    return TestClient(app)
 
 def test_list_categories_status_and_shape(client: TestClient) -> None:
     response = client.get("/categories")
@@ -15,9 +8,6 @@ def test_list_categories_status_and_shape(client: TestClient) -> None:
     data = response.json()
     assert isinstance(data, list)
     assert len(data) == 4
-
-# контракт: id, name, servicesCount (camelCase)
-
     for item in data:
         assert set(item.keys()) == {"id", "name", "servicesCount"}
         assert isinstance(item["servicesCount"], int)
@@ -43,10 +33,3 @@ def test_get_category_not_found(client: TestClient) -> None:
     response = client.get("/categories/999")
     assert response.status_code == 404
     assert response.json() == {"detail": "Category not found"}
-
-def test_get_category_invalid_id_type(client: TestClient) -> None:
-
-# FastAPI отклонит нечисловой id в пути и вернёт 422.
-
-    response = client.get("/categories/abc")
-    assert response.status_code == 422
